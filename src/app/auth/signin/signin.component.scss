@@ -25,7 +25,7 @@ button {
     color: $textcolor;
     font-size: $fontsize;
     font-family: $fontfamily;
-    @include transform(rotate(5deg)); // use the mixin to rotate the button 
+    // @include transform(rotate(5deg)); // use the mixin to rotate the button 
 }
 
 button-report {

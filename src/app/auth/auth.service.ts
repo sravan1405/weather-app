@@ -1,25 +1,34 @@
 import { Router } from "@angular/router";
 import { Injectable } from "@angular/core";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
-  email: string = "aman.patial@gmail.com";
-  password: string = "AmanPatial";
-  signedIn: boolean = false;
+  email: string = "a";
+  password: string = "a";
 
   constructor(private router: Router) {}
 
   SignIn(email: string, password: string) {
     if (this.email === email && this.password === password) {
-      this.signedIn = true;
+      this.setLoggedIn(true);
       this.router.navigate(["/forecast"]);
     }
   }
   SignOut() {
-    this.signedIn = false;
-    this.router.navigate(["/today"]);
+    this.setLoggedIn(false);
+    this.router.navigate(["/signin"]);
   }
-  isAuthenticated() {
-    return this.signedIn;
+
+  isAuthenticated(): boolean   {
+    const status = localStorage.getItem("isLoggedIn");
+    return status == 'true';
   }
+
+  // Method to set the user's logged-in status
+  setLoggedIn(status: boolean) {
+    localStorage.setItem("isLoggedIn", status.toString());
+  }
+
 }
