@@ -18,6 +18,7 @@ export class WeatherSearchComponent implements OnInit {
 
   city: string = '';
   weatherData: any;
+  weatherDataAvailable = false;
 
   constructor(private _weatherService: WeatherService,) {
   }
@@ -27,10 +28,13 @@ export class WeatherSearchComponent implements OnInit {
   getWeather() {
     this._weatherService.getWeatherForecast(this.city).subscribe(
       (data) => {
+        this.weatherDataAvailable = true;
         console.log(data);
         this.weatherData = data;
       },
       (error) => {
+        this.weatherDataAvailable = false;
+        alert(error.error.message);
         console.error('Error fetching weather data:', error);
       }
     );

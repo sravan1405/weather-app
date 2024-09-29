@@ -12,12 +12,12 @@
     <button (click)="getWeather()">Get Weather</button>
   
     <!-- Weather Information -->
-    <div *ngIf="weatherData">
-      <h2>Weather in {{ weatherData.name }}</h2>
-      <p><strong>Temperature(in Celsius):</strong> {{ weatherData.main.temp }} °C</p>
-      <p><strong>Temperature(in Fahrenheit):</strong> {{ weatherData.main.temp | temperatureConverter:'F'}} °F/p>
-      <p><strong>Humidity:</strong> {{ weatherData.main.humidity }} %</p>
-      <p><strong>Wind Speed:</strong> {{ weatherData.wind.speed }} m/s</p>
-      <p><strong>Weather:</strong> {{ weatherData.weather[0].description }}</p>
+    <div *ngIf="weatherDataAvailable">
+      <h2>Weather in {{ weatherData.city.name }}</h2>
+      <p><strong>Temperature(in Celsius):</strong> {{ weatherData.list[0].main.temp }} °C</p>
+      <p><strong>Temperature(in Fahrenheit):</strong> {{ weatherData.list[0].main.temp | temperatureConverter:'F'}} °F</p>
+      <p><strong>Humidity:</strong> {{ weatherData.list[0].main.humidity }} %</p>
+      <p><strong>Wind Speed:</strong> {{ weatherData.list[0].wind.speed }} m/s</p>
+      <p><strong>Weather:</strong> {{ weatherData.list[0].weather[0].description }}</p>
     </div>
   </div>

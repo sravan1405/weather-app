@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { User } from '../user.ts';
 
 @Component({
   selector: 'app-signup',
@@ -11,17 +13,17 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 })
 export class SignupComponent implements OnInit {
 
-  genders = ['male', 'female'];
   signupForm!: FormGroup;
   submitted: boolean = false;
+  user: User;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.signupForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, [Validators.required])
+      'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
     })
 
     this.signupForm.statusChanges.subscribe(
@@ -30,16 +32,29 @@ export class SignupComponent implements OnInit {
 
     //set default value
     this.signupForm.setValue({
-      'name': 'Aman',
-      'email': 'aman.patial@gmail.com2',
-      'password': 'AmanPatial'
+      'name': '',
+      'email': '',
+      'password': ''
     })
   }
+  
+  // Getter for easy access to form fields in the template
+  get f() {
+    return this.signupForm.controls;
+  }
+
   onSubmit() {
     this.submitted = true;
-    console.log('After submit', this.signupForm);
-    console.log('Values', this.signupForm.value);
-    //this.signupForm.reset();
+    if (this.signupForm.invalid) {
+      return;  // Stop if form is invalid
+    }
+    this.user = {
+      name : this.signupForm.controls['name'].value,
+      email: this.signupForm.controls['email'].value,
+      password: this.signupForm.controls['password'].value
+    }
+    this.authService.SignUp(this.user);
+    this.signupForm.reset();
   }
 
 }
