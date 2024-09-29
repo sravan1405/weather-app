@@ -1,0 +1,18 @@
+
+/* Use the variables */
+@import '../../variables';
+
+nav {
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    li {
+      display: inline-block;
+    }
+    a {
+      padding: 6px 12px;
+      text-decoration: none;
+    }
+  }
