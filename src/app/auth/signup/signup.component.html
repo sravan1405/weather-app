@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <form id= "signup-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
@@ -24,4 +24,37 @@
       </div>
     </div>
   </div>
-  
+   -->
+
+  <div class="login-page" id="container" style="height: 850px;" id="container">
+    <div class="container">
+            <div class="log-content">
+              <h1 style="color: white;text-align: center;">SIGNUP </h1>
+              <div class="log-body">
+                <form id= "signup-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                    <label style="color: white!important">Name</label>
+                    <input formControlName="name" type="text" id="name" class="form-control">
+                    <span class="text-danger" *ngIf="submitted && signupForm.hasError('required', 'name')">This field is required!</span>
+                  </div>
+                  <div class="form-group">
+                    <label style="color: white!important">Username</label>
+                    <input formControlName="email" type="text" id="email" class="form-control">
+                    <span class="text-danger" *ngIf="submitted && signupForm.hasError('required', 'email')">This field is required!</span>
+                    <span class="text-danger" *ngIf="submitted && signupForm.hasError('email', 'email')">Please enter a valid email
+                      address!</span>
+                  </div>
+                  <div class="form-group">
+                    <label style="color: white!important">Password</label>
+                    <input formControlName="password" type="password" id="password" class="form-control">
+                    <span class="text-danger" *ngIf="submitted && signupForm.hasError('required', 'password')">This field is required!</span>
+                  </div>
+                  <div class="button-container">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button class="btn btn-info" style="margin-left: 230px;" type="button" (click)="login()">Login</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+    </div>
+  </div>

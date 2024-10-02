@@ -31,6 +31,7 @@ export class AuthService {
   }
   SignUp(user: User){
     this.addUser(user);
+    this.router.navigate(["/signin"]);
   }
 
   isAuthenticated(): boolean   {

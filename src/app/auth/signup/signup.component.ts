@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { User } from '../user.ts';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +18,9 @@ export class SignupComponent implements OnInit {
   submitted: boolean = false;
   user: User;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -55,6 +58,10 @@ export class SignupComponent implements OnInit {
     }
     this.authService.SignUp(this.user);
     this.signupForm.reset();
+  }
+
+  login(){
+    this.router.navigate(["/signin"]);
   }
 
 }

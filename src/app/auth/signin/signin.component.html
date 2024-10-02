@@ -1,17 +1,25 @@
-<div id="container" class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="OnSignin(f)" #f="ngForm">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" ngModel class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" ngModel class="form-control">
-        </div>
-        <button type="submit">Sign In</button>
-        <button type="button" (click)="OnSignUp()">Sign Up</button>
-      </form>
-    </div>
+<div class="login-page" id="container" style="height: 850px;" id="container">
+  <div class="container">
+          <div class="log-content">
+            <h1 style="color: white;text-align: center;">LOGIN </h1>
+            <div class="log-body">
+              <form (ngSubmit)="OnSignin(f)" #f="ngForm">
+                <div class="form-group">
+                  <label for="email" style="color: white!important">Email</label>
+                  <input type="email" id="email" name="email" ngModel class="form-control" style="color: white!important" >
+                </div>
+                <div class="form-group">
+                  <label for="password" style="color: white!important">Password</label>
+                  <input type="password" id="password" name="password" ngModel class="form-control">
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary btn-block" type="submit" style="color: white;"><b>Sign In</b></button>
+                </div>
+                <div class="form-group">
+                  <p style="color: white;">Create an account<a  (click)="OnSignUp()"> Sign Up</a>
+                </div>
+              </form>
+            </div>
+          </div>
   </div>
-  
+</div>

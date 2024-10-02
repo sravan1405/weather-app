@@ -21,5 +21,7 @@ export class HeaderComponent implements OnInit {
     console.log('Sign Out');
     this.authService.SignOut();
   }
-
+get isAuthenticated() {
+  return this.authService.isAuthenticated();
+}
 }
